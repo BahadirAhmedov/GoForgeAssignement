@@ -16,7 +16,7 @@ import (
 func (p *Numbers) NumberAdd(ctx *gin.Context) {
 	const op = "handlers.NumberAdd"
 
-	log := p.log.With(
+	log := p.Log.With(
 		slog.String("op", op),
 	)
 	
@@ -34,7 +34,7 @@ func (p *Numbers) NumberAdd(ctx *gin.Context) {
 		Value: request.Value,
 	}
 	
-	numbers, err := p.numbersProvider.SaveNumber(model)
+	numbers, err := p.NumbersProvider.SaveNumber(model)
 	if err != nil {
 		log.Error("failed to save number", sl.Err(err))
 		ctx.JSON(http.StatusInternalServerError, response.Error(INTERNAL_ERROR, "failed to add team"))

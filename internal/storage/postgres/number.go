@@ -11,11 +11,7 @@ import (
 func (s *Storage) SaveNumber(num models.Number) ([]int, error) {
 	const op = "storage.postgres.SaveNumber"
 
-	 _, err := s.db.Exec(`CREATE TABLE IF NOT EXISTS numbers (value INT)`)
-    if err != nil {
-        return nil, fmt.Errorf("%s: %w", op, err)
-    }
-    _, err = s.db.Exec("INSERT INTO numbers(value) VALUES($1)", num.Value)
+    _, err := s.db.Exec("INSERT INTO numbers(value) VALUES($1)", num.Value)
     if err != nil {
         return nil, fmt.Errorf("%s: %w", op, err)
     }

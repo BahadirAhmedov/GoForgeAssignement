@@ -32,3 +32,13 @@ func New(host string, port int, user string, password string, dbname string) (*S
 
 	return &Storage{db: db}, nil
 }
+
+func CreateTable(s *Storage) error {
+	const op = "storage.postgres.CreateTable"
+
+	_, err := s.db.Exec(`CREATE TABLE IF NOT EXISTS numbers (value INT)`)
+    if err != nil {
+		return fmt.Errorf("%s: %w", op, err)
+    }
+	return nil
+}

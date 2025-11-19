@@ -14,8 +14,10 @@ import (
 	"goforge/internal/app"
 	"goforge/internal/config"
 	"goforge/internal/lib/logger/sl"
+	"database/sql"
 
 )
+var db *sql.DB
 
 
 const (

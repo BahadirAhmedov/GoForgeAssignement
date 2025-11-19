@@ -14,8 +14,8 @@ const (
 
 
 type Numbers struct {
-	log *slog.Logger
-	numbersProvider NumbersProvider
+	Log *slog.Logger
+	NumbersProvider NumbersProvider
 }
 
 
@@ -29,8 +29,8 @@ func New(
 	numbersProvider NumbersProvider,
 ) *Numbers {
 	return &Numbers{
-		log:                 &log,
-		numbersProvider: numbersProvider,
+		Log:                 &log,
+		NumbersProvider: numbersProvider,
 	}
 }
 
